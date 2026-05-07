@@ -1,4 +1,4 @@
-# LoopedGPT
+# Fully Looped Transformer
 
 A PyTorch implementation of looped transformer architectures for language modeling. The project trains and evaluates several model variants — **FLT** (Fully Looped Transformer), **LT** (Looped Transformer).
 
