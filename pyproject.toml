@@ -1,0 +1,74 @@
+[project]
+name = "Fully Looped Transformer"
+version = "0.1.0"
+description = "a implement of Fully Looped Transformer"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "arckit>=1.0.1",
+    "certifi>=2026.2.25",
+    "datasets>=4.0.0",
+    "einops>=0.8.1",
+    "fastapi>=0.117.1",
+    "files-to-prompt>=0.6",
+    "mazelib>=0.9.16",
+    "psutil>=7.1.0",
+    "py-sudoku>=2.0.0",
+    "regex>=2025.9.1",
+    "rustbpe>=0.1.0",
+    "setuptools>=80.9.0",
+    "tiktoken>=0.11.0",
+    "tokenizers>=0.22.0",
+    "torch==2.9.1",
+    "trackio>=0.13.1",
+    "transformers>=5.3.0",
+    "uvicorn>=0.36.0",
+    "wandb>=0.21.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+# target torch to cuda 12.8 or CPU
+[tool.uv.sources]
+torch = [  
+    { index = "pytorch-cpu", extra = "cpu" },  
+    { index = "pytorch-cu128", extra = "gpu" },  
+]
+
+[[tool.uv.index]]  
+name = "pytorch-cpu"  
+url = "https://download.pytorch.org/whl/cpu"  
+explicit = true  
+  
+[[tool.uv.index]]  
+name = "pytorch-cu128"  
+url = "https://download.pytorch.org/whl/cu128"  
+explicit = true
+
+[project.optional-dependencies]  
+cpu = [  
+    "torch>=2.8.0",  
+]  
+gpu = [  
+    "torch>=2.8.0",  
+]  
+  
+[tool.uv]  
+conflicts = [  
+    [  
+        { extra = "cpu" },  
+        { extra = "gpu" },  
+    ],  
+]  

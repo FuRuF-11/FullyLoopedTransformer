@@ -1,0 +1,9 @@
+name: "model_v2"
+# FLT  FLT_rl LT_i LT
+model_type: "FLT"
+# 1 2 6 10
+k: 2
+# 2 6 12
+num_hidden_layers: 2
+# 1 2 4 8 16 32
+device_batch_size: 32
